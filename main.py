@@ -18,7 +18,7 @@ for file in existing_files:
 # Load datasets
 print("Loading datasets...")
 wv = KeyedVectors.load("./word2vec.model", mmap="r")
-with open("./english-words.txt") as fin:
+with open("./secret-words.txt") as fin:
     english_words = fin.read().strip().split("\n")
 print("Datasets loaded.")
 print()
@@ -34,7 +34,7 @@ def find_possible(guess, reported_sim, words_to_consider):
     """
     ans = []
     for w in tqdm(words_to_consider):
-        if abs(similarity(guess, w) - reported_sim) <= 0.005:
+        if similarity(guess, w) - reported_sim <= 0.005:
             ans.append(w)
     return ans
 
@@ -86,7 +86,7 @@ def do_run():
             print(f"The answer is '{possible.pop()}'!")
 
         else:
-            print(f"There are no possible words remainig—something went wrong.")
+            print(f"There are no possible words remaining--something went wrong.")
 
         print()
 

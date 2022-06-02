@@ -9,9 +9,8 @@ if not {"word2vec.model", "word2vec.model.vectors.npy"}.issubset(set(os.listdir(
     print("Downloading Google word2vec dataset...")
 
     import gensim.downloader
-    google_word2vec = gensim.downloader.load("word2vec-google-news-300")
-    google_word2vec.save("./word2vec.model")
-    wv = google_word2vec.wv
+    wv = gensim.downloader.load("word2vec-google-news-300")
+    wv.save("./word2vec.model")
 
     print("Download complete.")
 
