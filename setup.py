@@ -3,14 +3,14 @@ import os
 
 # Check if libraries are installed
 
-if not {"word2vec.model", "word2vec.model.vectors.npy"}.issubset(set(os.listdir())):
+if True or not {"word2vec.model", "word2vec.model.vectors.npy"}.issubset(set(os.listdir())):
     # Get the pretrained Google Word2Vec dataset
     # This might take a couple minutes
     print("Downloading Google word2vec dataset...")
 
     import gensim.downloader
-    wv = gensim.downloader.load("word2vec-google-news-300")
-    wv.save("./word2vec.model")
+    wv = gensim.downloader.load("fasttext-wiki-news-subwords-300")
+    wv.save("./word2vec-fasttext-wiki-news-subwords-300.model")
 
     print("Download complete.")
 
