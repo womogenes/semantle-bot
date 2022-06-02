@@ -1,4 +1,3 @@
-# Load the model (this takes a while)
 from scipy import spatial
 from gensim.models import KeyedVectors
 
@@ -46,7 +45,7 @@ def make_list(words):
         return f"'{words[0]}'"
     if len(words) == 2:
         return f"'{words[0]}' and '{words[1]}'"
-    return "'" + "', '".join(words[:-1]) + ", and " + words[-1] + "'"
+    return "'" + "', '".join(words[:-1]) + "', and '" + words[-1] + "'"
 
 
 # Start guessing process
