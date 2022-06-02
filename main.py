@@ -28,12 +28,12 @@ def similarity(word1, word2):
     return (1 - spatial.distance.cosine(wv[word1], wv[word2])) * 100
 
 
-def find_possible(guess, reported_sim):
+def find_possible(guess, reported_sim, words_to_consider):
     """
     Return a set of possible words given a guess and its the similary to the secret word.
     """
     ans = []
-    for w in tqdm(english_words):
+    for w in tqdm(words_to_consider):
         if abs(similarity(guess, w) - reported_sim) <= 0.005:
             ans.append(w)
     return ans
@@ -71,7 +71,7 @@ def do_run():
                     print()
 
         possible = possible.intersection(
-            set(find_possible(guess, reported_sim)))
+            set(find_possible(guess, reported_sim, possible)))
         sample_words = random.sample(sorted(possible), min(3, len(possible)))
 
         if len(possible) > 3:
