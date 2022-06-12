@@ -33,7 +33,7 @@ def find_possible(guess, reported_sim, words_to_consider):
     """
     ans = []
     for w in tqdm(words_to_consider):
-        if similarity(guess, w) - reported_sim <= 0.005:
+        if abs(similarity(guess, w) - reported_sim) <= 0.005:
             ans.append(w)
     return ans
 
