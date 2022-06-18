@@ -10,5 +10,6 @@ To run the bot, run `./main.py` and follow the prompts. Note that the initial co
 
 ## References
 
+- My explanatory YouTube video: https://youtu.be/EHZYiuxGSX8
 - List of English words from https://github.com/dwyl/english-words
 - Google Word2Vec dataset from https://code.google.com/archive/p/word2vec, downloaded with [gensim](https://radimrehurek.com/gensim/models/word2vec.html)
