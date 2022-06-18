@@ -17,7 +17,7 @@ for file in existing_files:
 # Load datasets
 print("Loading datasets...")
 wv = KeyedVectors.load("./word2vec.model", mmap="r")
-with open("./secret-words.txt") as fin:
+with open("./english-words.txt") as fin:
     english_words = fin.read().strip().split("\n")
 print("Datasets loaded.")
 print()
