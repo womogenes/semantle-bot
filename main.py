@@ -1,9 +1,11 @@
 from scipy import spatial
 from gensim.models import KeyedVectors
-
+import sys
 import os
+import numpy as np
 from tqdm import tqdm
 import random
+from time import perf_counter
 
 # Make sure datasets are downloaded
 needed_files = ["word2vec.model",
@@ -13,15 +15,13 @@ for file in existing_files:
     if file not in existing_files:
         print("Run 'setup.py' to download the datasets first.")
 
-
 # Load datasets
 print("Loading datasets...")
-wv = KeyedVectors.load("./word2vec.model", mmap="r")
-with open("./english-words.txt") as fin:
+wv = KeyedVectors.load("word2vec.model", mmap="r")
+with open("english-words.txt") as fin:
     english_words = fin.read().strip().split("\n")
 print("Datasets loaded.")
 print()
-
 
 def similarity(word1, word2):
     return (1 - spatial.distance.cosine(wv[word1], wv[word2])) * 100
@@ -90,12 +90,14 @@ def do_run():
         print()
 
 
-while True:
-    do_run()
+if __name__ == "__main__":
 
     while True:
-        res = input("Would you like to do another run? [y/N] ").lower()
-        if res == "y":
-            break
-        else:
-            exit()
+        do_run()
+
+        while True:
+            res = input("Would you like to do another run? [y/N] ").lower()
+            if res == "y":
+                break
+            else:
+                exit()
